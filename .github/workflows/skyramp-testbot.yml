@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run Skyramp Testbot
-        uses: skyramp/testbot@v0.2.0
+        uses: letsramp/testbot@develop
         with:
           skyramp_license_file: ${{ secrets.SKYRAMP_LICENSE }}
           anthropic_api_key: ${{ secrets.SKYRAMP_TESTBOT_API_KEY }}
@@ -36,3 +36,4 @@ jobs:
           post_pr_comment: true
           enable_debug: true
           commit_message: 'TestBot: update tests for Prefect'
+          skyramp_mcp_version: next
