@@ -96,6 +96,11 @@ class Flow(ORMBaseModel):
         description="A dictionary of key-value labels. Values can be strings, numbers, or booleans.",
         examples=[{"key": "value1", "key2": 42}],
     )
+    version: int = Field(
+        default=1,
+        description="The version of the flow definition. Incremented automatically on update.",
+        examples=[1, 2, 3],
+    )
 
 
 class FlowRunPolicy(PrefectBaseModel):

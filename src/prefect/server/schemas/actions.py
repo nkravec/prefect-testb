@@ -74,6 +74,11 @@ class FlowCreate(ActionBaseModel):
         description="A dictionary of key-value labels. Values can be strings, numbers, or booleans.",
         examples=[{"key": "value1", "key2": 42}],
     )
+    version: Optional[int] = Field(
+        default=None,
+        description="Initial version for the flow. Defaults to 1 if not provided.",
+        examples=[1],
+    )
 
 
 class FlowUpdate(ActionBaseModel):
@@ -83,6 +88,11 @@ class FlowUpdate(ActionBaseModel):
         default_factory=list,
         description="A list of flow tags",
         examples=[["tag-1", "tag-2"]],
+    )
+    labels: Union[KeyValueLabels, None] = Field(
+        default=None,
+        description="A dictionary of key-value labels to update on the flow.",
+        examples=[{"key": "value1", "key2": 42}],
     )
 
 
