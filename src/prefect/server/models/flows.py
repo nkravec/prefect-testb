@@ -77,32 +77,10 @@ async def update_flow(
         .where(db.Flow.id == flow_id)
         # exclude_unset=True allows us to only update values provided by
         # the user, ignoring any defaults on the model
-        .values(
-            **flow.model_dump_for_orm(exclude_unset=True),
-            version=db.Flow.version + 1,
-        )
+        .values(**flow.model_dump_for_orm(exclude_unset=True))
     )
     result = await session.execute(update_stmt)
     return result.rowcount > 0
-
-
-@db_injector
-async def get_flow_version(
-    db: PrefectDBInterface, session: AsyncSession, flow_id: UUID
-) -> Optional[int]:
-    """Returns the current version number of a flow.
-
-    Args:
-        session: A database session
-        flow_id: a flow id
-
-    Returns:
-        Optional[int]: the current version number, or None if the flow does not exist
-    """
-    result = await session.execute(
-        select(db.Flow.version).where(db.Flow.id == flow_id)
-    )
-    return result.scalar()
 
 
 @db_injector
