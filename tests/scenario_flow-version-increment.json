@@ -1,0 +1,80 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"version-test-flow-20260312\", \"tags\": [], \"labels\": {}}",
+    "ResponseBody": "{\"id\": \"00000000-0000-0000-0000-000000000001\", \"created\": \"2026-03-12T17:00:00Z\", \"updated\": \"2026-03-12T17:00:00Z\", \"name\": \"version-test-flow-20260312\", \"tags\": [], \"labels\": {}, \"version\": 1}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-12T17:04:32.108Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"tags\": [\"updated\", \"v2\"]}",
+    "ResponseBody": "{}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "PATCH",
+    "Path": "/flows/00000000-0000-0000-0000-000000000001",
+    "QueryParams": {},
+    "StatusCode": 204,
+    "Port": 4200,
+    "Timestamp": "2026-03-12T17:04:44.918Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"id\": \"00000000-0000-0000-0000-000000000001\", \"created\": \"2026-03-12T17:00:00Z\", \"updated\": \"2026-03-12T17:05:00Z\", \"name\": \"version-test-flow-20260312\", \"tags\": [\"updated\", \"v2\"], \"labels\": {}, \"version\": 2}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/flows/00000000-0000-0000-0000-000000000001",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-12T17:04:54.388Z",
+    "Scheme": "http"
+  }
+]
