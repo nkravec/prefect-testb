@@ -1,0 +1,80 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"filter-test-flow-20260312\", \"tags\": [\"testbot\", \"filter-test\"], \"labels\": {\"env\": \"staging\", \"team\": \"backend\"}, \"version\": 2}",
+    "ResponseBody": "{\"id\": \"00000000-0000-0000-0000-000000000030\", \"created\": \"2026-03-12T18:30:00Z\", \"updated\": \"2026-03-12T18:30:00Z\", \"name\": \"filter-test-flow-20260312\", \"tags\": [\"testbot\", \"filter-test\"], \"labels\": {\"env\": \"staging\", \"team\": \"backend\"}, \"version\": 2}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-12T19:15:36.279Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"flows\": {\"name\": {\"any_\": [\"filter-test-flow-20260312\"]}}}",
+    "ResponseBody": "[{\"id\": \"00000000-0000-0000-0000-000000000030\", \"created\": \"2026-03-12T18:30:00Z\", \"updated\": \"2026-03-12T18:30:00Z\", \"name\": \"filter-test-flow-20260312\", \"tags\": [\"testbot\", \"filter-test\"], \"labels\": {\"env\": \"staging\", \"team\": \"backend\"}, \"version\": 2}]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/filter",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-12T19:15:43.587Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "DELETE",
+    "Path": "/api/flows/00000000-0000-0000-0000-000000000030",
+    "QueryParams": {},
+    "StatusCode": 204,
+    "Port": 4200,
+    "Timestamp": "2026-03-12T19:15:49.082Z",
+    "Scheme": "http"
+  }
+]
