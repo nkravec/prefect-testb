@@ -1252,6 +1252,34 @@ async def read_deployment_schedules(
         )
 
 
+@router.get("/{id:uuid}/schedules/preview")
+async def preview_deployment_schedules(
+    deployment_id: UUID = Path(..., description="The deployment id", alias="id"),
+    n: int = 5,
+    db: PrefectDBInterface = Depends(provide_database_interface),
+) -> List[datetime.datetime]:
+    """Return the next ``n`` scheduled run times (default 5, max 20) across all
+    active schedules for a deployment, sorted ascending."""
+    if n < 1 or n > 20:
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="n must be between 1 and 20.",
+        )
+    async with db.session_context() as session:
+        deployment = await models.deployments.read_deployment(
+            session=session, deployment_id=deployment_id
+        )
+        if not deployment:
+            raise HTTPException(
+                status.HTTP_404_NOT_FOUND, detail="Deployment not found."
+            )
+        return await models.deployments.schedule_preview(
+            session=session,
+            deployment_id=deployment_id,
+            n=n,
+        )
+
+
 @router.post("/{id:uuid}/schedules", status_code=status.HTTP_201_CREATED)
 async def create_deployment_schedules(
     deployment_id: UUID = Path(..., description="The deployment id", alias="id"),
