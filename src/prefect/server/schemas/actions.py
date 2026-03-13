@@ -74,9 +74,9 @@ class FlowCreate(ActionBaseModel):
         description="A dictionary of key-value labels. Values can be strings, numbers, or booleans.",
         examples=[{"key": "value1", "key2": 42}],
     )
-    version: Optional[int] = Field(
-        default=None,
-        description="Initial version for the flow. Defaults to 1 if not provided.",
+    version: int = Field(
+        default=1,
+        description="Initial version for the flow.",
         examples=[1],
     )
 
