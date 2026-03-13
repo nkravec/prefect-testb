@@ -674,6 +674,12 @@ class TaskRun(Run):
     )
     tags: Mapped[list[str]] = mapped_column(JSON, server_default="[]", default=list)
     labels: Mapped[Optional[schemas.core.KeyValueLabels]] = mapped_column(JSON)
+    mapped: Mapped[bool] = mapped_column(
+        sa.Boolean, server_default="false", default=False
+    )
+    map_index: Mapped[int] = mapped_column(
+        sa.Integer, server_default="-1", default=-1
+    )
 
     state_id: Mapped[Optional[uuid.UUID]] = mapped_column(
         UUID,
