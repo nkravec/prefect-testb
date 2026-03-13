@@ -141,6 +141,7 @@ class Flow(Base):
     name: Mapped[str]
     tags: Mapped[list[str]] = mapped_column(JSON, server_default="[]", default=list)
     labels: Mapped[Optional[schemas.core.KeyValueLabels]] = mapped_column(JSON)
+    version: Mapped[int] = mapped_column(sa.Integer, server_default="1", default=1)
 
     flow_runs: Mapped[list["FlowRun"]] = relationship(
         back_populates="flow", lazy="raise"
