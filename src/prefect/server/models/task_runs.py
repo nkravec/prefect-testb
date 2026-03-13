@@ -586,3 +586,26 @@ async def with_system_labels_for_task_run(
         parent_labels = flow_run.labels if flow_run and flow_run.labels else {}
 
     return parent_labels | default_labels | client_supplied_labels
+
+
+@db_injector
+async def read_mapped_task_runs(
+    db: PrefectDBInterface,
+    session: AsyncSession,
+    flow_run_id: UUID,
+    task_key: Optional[str] = None,
+) -> list[orm_models.TaskRun]:
+    """Return all mapped task runs (map_index >= 0) for a given flow run,
+    optionally filtered to a single task_key."""
+    query = (
+        select(db.TaskRun)
+        .where(
+            db.TaskRun.flow_run_id == flow_run_id,
+            db.TaskRun.mapped.is_(True),
+        )
+        .order_by(db.TaskRun.map_index)
+    )
+    if task_key is not None:
+        query = query.where(db.TaskRun.task_key == task_key)
+    result = await session.execute(query)
+    return result.scalars().unique().all()
