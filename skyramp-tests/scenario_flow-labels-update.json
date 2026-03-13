@@ -1,0 +1,80 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"flow-labels-update-test\", \"tags\": [\"initial-tag\"], \"labels\": {}}",
+    "ResponseBody": "{\"id\": \"c3d4e5f6-a7b8-9012-cdef-123456789012\", \"name\": \"flow-labels-update-test\", \"tags\": [\"initial-tag\"], \"labels\": {}, \"version\": 1, \"created\": \"2026-03-13T00:00:00.000000+00:00\", \"updated\": \"2026-03-13T00:00:00.000000+00:00\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-13T14:09:36.217Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"tags\": [\"initial-tag\", \"updated-tag\"], \"labels\": {\"env\": \"production\", \"team\": \"data-engineering\"}}",
+    "ResponseBody": "{}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "PATCH",
+    "Path": "/api/flows/c3d4e5f6-a7b8-9012-cdef-123456789012",
+    "QueryParams": {},
+    "StatusCode": 204,
+    "Port": 4200,
+    "Timestamp": "2026-03-13T14:09:58.208Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"id\": \"c3d4e5f6-a7b8-9012-cdef-123456789012\", \"name\": \"flow-labels-update-test\", \"tags\": [\"initial-tag\", \"updated-tag\"], \"labels\": {\"env\": \"production\", \"team\": \"data-engineering\"}, \"version\": 2, \"created\": \"2026-03-13T00:00:00.000000+00:00\", \"updated\": \"2026-03-13T00:01:00.000000+00:00\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        ""
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/flows/c3d4e5f6-a7b8-9012-cdef-123456789012",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-13T14:10:09.982Z",
+    "Scheme": "http"
+  }
+]
