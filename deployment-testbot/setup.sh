@@ -44,4 +44,6 @@ if __name__ == "__main__":
 PYEOF
 EOF
 
+export SKYRAMP_TEST_BASE_URL=http://localhost:4200/api
+
 echo "✓ Prefect setup complete"
