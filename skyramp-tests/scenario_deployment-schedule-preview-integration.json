@@ -1,0 +1,80 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"test-flow-schedule-preview\", \"tags\": [\"testing\"]}",
+    "ResponseBody": "{\"id\": \"00000000-0000-0000-0000-000000000001\", \"name\": \"test-flow-schedule-preview\", \"tags\": [\"testing\"], \"labels\": {}, \"created\": \"2026-03-16T00:00:00+00:00\", \"updated\": \"2026-03-16T00:00:00+00:00\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T18:07:57.714Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"test-deployment-with-schedule\", \"flow_id\": \"00000000-0000-0000-0000-000000000001\", \"paused\": false, \"schedules\": [{\"active\": true, \"schedule\": {\"cron\": \"0 * * * *\", \"timezone\": \"UTC\", \"day_or\": true}, \"parameters\": {}}], \"tags\": [\"testing\"], \"labels\": {}}",
+    "ResponseBody": "{\"id\": \"00000000-0000-0000-0000-000000000002\", \"name\": \"test-deployment-with-schedule\", \"flow_id\": \"00000000-0000-0000-0000-000000000001\", \"paused\": false, \"schedules\": [{\"id\": \"00000000-0000-0000-0000-000000000003\", \"active\": true, \"schedule\": {\"cron\": \"0 * * * *\", \"timezone\": \"UTC\", \"day_or\": true}}], \"tags\": [\"testing\"], \"labels\": {}, \"created\": \"2026-03-16T00:00:00+00:00\", \"updated\": \"2026-03-16T00:00:00+00:00\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/deployments/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T18:08:04.061Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "[\"2026-03-16T19:00:00+00:00\", \"2026-03-16T20:00:00+00:00\", \"2026-03-16T21:00:00+00:00\", \"2026-03-16T22:00:00+00:00\", \"2026-03-16T23:00:00+00:00\"]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/deployments/00000000-0000-0000-0000-000000000002/schedules/preview",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T18:08:09.980Z",
+    "Scheme": "http"
+  }
+]
