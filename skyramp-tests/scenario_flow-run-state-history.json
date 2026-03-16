@@ -1,0 +1,106 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"state-history-test-flow\"}",
+    "ResponseBody": "{\"id\": \"f1a2b3c4-d5e6-7890-abcd-ef1234567890\", \"name\": \"state-history-test-flow\", \"tags\": [], \"labels\": {}}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T20:39:06.926Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"flow_id\": \"f1a2b3c4-d5e6-7890-abcd-ef1234567890\"}",
+    "ResponseBody": "{\"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"flow_id\": \"f1a2b3c4-d5e6-7890-abcd-ef1234567890\", \"name\": \"eager-koala\", \"state_type\": \"PENDING\", \"state_name\": \"Pending\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/flow_runs/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T20:39:12.188Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"state\": {\"type\": \"RUNNING\", \"name\": \"Running\", \"message\": \"Flow run is now running\"}}",
+    "ResponseBody": "{\"status\": \"ACCEPT\", \"state\": {\"id\": \"c1d2e3f4-a5b6-7890-abcd-ef1234567890\", \"type\": \"RUNNING\", \"name\": \"Running\", \"timestamp\": \"2024-01-01T00:01:00Z\"}}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/flow_runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890/set_state",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T20:39:17.511Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "[{\"id\": \"b1c2d3e4-f5a6-7890-abcd-ef1234567890\", \"type\": \"PENDING\", \"name\": \"Pending\", \"timestamp\": \"2024-01-01T00:00:00Z\", \"message\": null}, {\"id\": \"c1d2e3f4-a5b6-7890-abcd-ef1234567890\", \"type\": \"RUNNING\", \"name\": \"Running\", \"timestamp\": \"2024-01-01T00:01:00Z\", \"message\": \"Flow run is now running\"}]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/flow_runs/a1b2c3d4-e5f6-7890-abcd-ef1234567890/states",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-16T20:39:22.554Z",
+    "Scheme": "http"
+  }
+]
