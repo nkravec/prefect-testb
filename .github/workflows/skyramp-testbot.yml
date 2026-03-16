@@ -47,3 +47,4 @@ jobs:
           enable_debug: true
           commit_message: 'TestBot: update tests for Prefect'
           skyramp_mcp_version: next
+          skyramp_executor_version: v1.3.13
