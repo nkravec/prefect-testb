@@ -1062,3 +1062,25 @@ async def update_flow_run_labels(
         await models.flow_runs.update_flow_run_labels(
             session=session, flow_run_id=flow_run_id, labels=labels
         )
+
+
+@router.get("/{id:uuid}/states")
+async def read_flow_run_states(
+    flow_run_id: UUID = Path(..., description="The flow run id", alias="id"),
+    db: PrefectDBInterface = Depends(provide_database_interface),
+) -> List[schemas.states.State]:
+    """Return all historical states for a flow run, ordered by timestamp ascending."""
+    async with db.session_context() as session:
+        flow_run = await models.flow_runs.read_flow_run(
+            session=session, flow_run_id=flow_run_id
+        )
+        if not flow_run:
+            raise HTTPException(
+                status.HTTP_404_NOT_FOUND, detail="Flow run not found."
+            )
+        orm_states = await models.flow_runs.read_flow_run_states(
+            session=session, flow_run_id=flow_run_id
+        )
+        return [
+            schemas.states.State.from_orm_without_result(s) for s in orm_states
+        ]

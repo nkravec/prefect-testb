@@ -730,3 +730,26 @@ async def update_flow_run_labels(
         return success
     except Exception:
         raise
+
+
+@db_injector
+async def read_flow_run_states(
+    db: PrefectDBInterface,
+    session: AsyncSession,
+    flow_run_id: UUID,
+) -> list[orm_models.FlowRunState]:
+    """Return all historical states for a flow run, ordered by timestamp ascending.
+
+    Args:
+        session: A database session
+        flow_run_id: The flow run whose state history to retrieve
+
+    Returns:
+        List of FlowRunState ORM objects ordered oldest-first
+    """
+    result = await session.execute(
+        select(db.FlowRunState)
+        .where(db.FlowRunState.flow_run_id == flow_run_id)
+        .order_by(db.FlowRunState.timestamp.asc())
+    )
+    return result.scalars().unique().all()
