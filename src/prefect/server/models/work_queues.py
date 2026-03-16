@@ -557,6 +557,66 @@ async def read_work_queue_status(
     )
 
 
+async def read_work_queue_stats(
+    session: AsyncSession, work_queue_id: UUID
+) -> schemas.core.WorkQueueStats:
+    """Return runtime statistics for a work queue.
+
+    Args:
+        session: A database session
+        work_queue_id: The work queue to query
+
+    Returns:
+        WorkQueueStats with scheduled/running run counts and available slots.
+    """
+    work_queue = await read_work_queue(session=session, work_queue_id=work_queue_id)
+    if not work_queue:
+        raise ObjectNotFoundError(f"Work queue with id {work_queue_id} not found")
+
+    wq_filter = schemas.filters.WorkQueueFilter(
+        id=schemas.filters.WorkQueueFilterId(any_=[work_queue_id])
+    )
+
+    scheduled_count = await models.flow_runs.count_flow_runs(
+        session=session,
+        flow_run_filter=schemas.filters.FlowRunFilter(
+            state=schemas.filters.FlowRunFilterState(
+                type=schemas.filters.FlowRunFilterStateType(
+                    any_=[schemas.states.StateType.SCHEDULED]
+                )
+            )
+        ),
+        work_queue_filter=wq_filter,
+    )
+
+    running_count = await models.flow_runs.count_flow_runs(
+        session=session,
+        flow_run_filter=schemas.filters.FlowRunFilter(
+            state=schemas.filters.FlowRunFilterState(
+                type=schemas.filters.FlowRunFilterStateType(
+                    any_=[schemas.states.StateType.RUNNING]
+                )
+            )
+        ),
+        work_queue_filter=wq_filter,
+    )
+
+    concurrency_limit = work_queue.concurrency_limit
+    available_slots = (
+        max(0, concurrency_limit - running_count)
+        if concurrency_limit is not None
+        else None
+    )
+
+    return schemas.core.WorkQueueStats(
+        work_queue_id=work_queue_id,
+        scheduled_runs=scheduled_count,
+        running_runs=running_count,
+        concurrency_limit=concurrency_limit,
+        available_slots=available_slots,
+    )
+
+
 @db_injector
 async def record_work_queue_polls(
     db: PrefectDBInterface,
