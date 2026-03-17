@@ -89,6 +89,9 @@ def test_integration():
     )
     # Generated Assertions
     assert preview_GET_response.status_code == 200
+    preview_data = preview_GET_response.json()
+    assert isinstance(preview_data, list)
+    assert len(preview_data) >= 0
 
 
 if __name__ == "__main__":

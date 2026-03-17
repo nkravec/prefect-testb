@@ -85,10 +85,15 @@ def test_integration():
         path="/api/deployments/{deployments}/schedules/preview",
         method="GET",
         headers=headers,
-        path_params={"deployments": skyramp.get_response_value(endpoint_1_POST_response, "id")}
+        path_params={"deployments": skyramp.get_response_value(endpoint_1_POST_response, "id")},
+        query_params={"format": "detailed"}
     )
     # Generated Assertions
     assert preview_GET_response.status_code == 200
+    assert skyramp.get_response_value(preview_GET_response, "deployment_id") is not None
+    assert skyramp.get_response_value(preview_GET_response, "schedule_count") is not None
+    assert skyramp.get_response_value(preview_GET_response, "upcoming") is not None
+    assert skyramp.get_response_value(preview_GET_response, "total_requested") is not None
 
 
 if __name__ == "__main__":
