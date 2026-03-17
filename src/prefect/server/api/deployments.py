@@ -1256,14 +1256,22 @@ async def read_deployment_schedules(
 async def preview_deployment_schedules(
     deployment_id: UUID = Path(..., description="The deployment id", alias="id"),
     n: int = 5,
+    format: str = "list",
     db: PrefectDBInterface = Depends(provide_database_interface),
-) -> List[datetime.datetime]:
+):
     """Return the next ``n`` scheduled run times (default 5, max 20) across all
-    active schedules for a deployment, sorted ascending."""
+    active schedules for a deployment, sorted ascending.
+
+    Set ``format=detailed`` to include metadata (schedule count, request size)."""
     if n < 1 or n > 20:
         raise HTTPException(
             status.HTTP_422_UNPROCESSABLE_ENTITY,
             detail="n must be between 1 and 20.",
+        )
+    if format not in ("list", "detailed"):
+        raise HTTPException(
+            status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail="format must be 'list' or 'detailed'.",
         )
     async with db.session_context() as session:
         deployment = await models.deployments.read_deployment(
@@ -1273,11 +1281,22 @@ async def preview_deployment_schedules(
             raise HTTPException(
                 status.HTTP_404_NOT_FOUND, detail="Deployment not found."
             )
-        return await models.deployments.schedule_preview(
+        dates = await models.deployments.schedule_preview(
             session=session,
             deployment_id=deployment_id,
             n=n,
         )
+        if format == "detailed":
+            active_count = sum(
+                1 for s in deployment.schedules if s.active
+            )
+            return schemas.core.SchedulePreviewDetailed(
+                deployment_id=deployment_id,
+                schedule_count=active_count,
+                upcoming=dates,
+                total_requested=n,
+            )
+        return dates
 
 
 @router.post("/{id:uuid}/schedules", status_code=status.HTTP_201_CREATED)

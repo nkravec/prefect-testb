@@ -580,6 +580,21 @@ class DeploymentSchedule(ORMBaseModel):
         )
 
 
+class SchedulePreviewDetailed(PrefectBaseModel):
+    """Detailed schedule preview with metadata."""
+
+    deployment_id: UUID = Field(..., description="The deployment ID.")
+    schedule_count: int = Field(
+        ..., description="Number of active schedules on this deployment."
+    )
+    upcoming: List[DateTime] = Field(
+        ..., description="Upcoming scheduled run times, sorted ascending."
+    )
+    total_requested: int = Field(
+        ..., description="The number of run times requested (the n parameter)."
+    )
+
+
 class VersionInfo(PrefectBaseModel, extra="allow"):
     type: str = Field(default=..., description="The type of version info.")
     version: str = Field(default=..., description="The version of the deployment.")
