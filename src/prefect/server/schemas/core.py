@@ -482,6 +482,17 @@ class TaskRun(TimeSeriesBaseModel, ORMBaseModel):
             "Tracks the source of inputs to a task run. Used for internal bookkeeping."
         ),
     )
+    mapped: bool = Field(
+        default=False,
+        description="Whether this task run was created by a task.map() call.",
+    )
+    map_index: int = Field(
+        default=-1,
+        description=(
+            "The index of this task run within a mapped set, or -1 for non-mapped"
+            " task runs."
+        ),
+    )
     state_type: Optional[states.StateType] = Field(
         default=None, description="The type of the current task run state."
     )
