@@ -1,0 +1,113 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"workflow-preview-flow-20260320\", \"tags\": []}",
+    "ResponseBody": "{\"id\": \"bbbbcccc-dddd-eeee-ffff-222233334444\", \"name\": \"workflow-preview-flow-20260320\", \"tags\": [], \"created\": \"2026-03-20T00:00:00Z\", \"updated\": \"2026-03-20T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T18:24:39.858Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"workflow-preview-deploy-20260320\", \"flow_id\": \"bbbbcccc-dddd-eeee-ffff-222233334444\", \"paused\": false, \"schedules\": [], \"tags\": []}",
+    "ResponseBody": "{\"id\": \"ddddeeee-ffff-aaaa-bbbb-444455556666\", \"name\": \"workflow-preview-deploy-20260320\", \"flow_id\": \"bbbbcccc-dddd-eeee-ffff-222233334444\", \"paused\": false, \"tags\": [], \"created\": \"2026-03-20T00:00:00Z\", \"updated\": \"2026-03-20T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/deployments",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T18:24:57.229Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "[{\"schedule\": {\"type\": \"CronSchedule\", \"cron\": \"0 * * * *\", \"timezone\": \"UTC\"}, \"active\": true}]",
+    "ResponseBody": "[{\"id\": \"eeeeffff-aaaa-bbbb-cccc-555566667777\", \"deployment_id\": \"ddddeeee-ffff-aaaa-bbbb-444455556666\", \"schedule\": {\"type\": \"CronSchedule\", \"cron\": \"0 * * * *\", \"timezone\": \"UTC\"}, \"active\": true}]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/deployments/ddddeeee-ffff-aaaa-bbbb-444455556666/schedules",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T18:25:19.296Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "[\"2026-03-21T00:00:00+00:00\", \"2026-03-21T01:00:00+00:00\", \"2026-03-21T02:00:00+00:00\"]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/deployments/ddddeeee-ffff-aaaa-bbbb-444455556666/schedules/preview",
+    "QueryParams": {
+      "n": [
+        "3"
+      ],
+      "format": [
+        "list"
+      ]
+    },
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T18:25:33.126Z",
+    "Scheme": "http"
+  }
+]
