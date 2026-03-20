@@ -44,4 +44,6 @@ if __name__ == "__main__":
 PYEOF
 EOF
 
+echo "SKYRAMP_TEST_BASE_URL=http://localhost:4200" >> $GITHUB_ENV
+
 echo "✓ Prefect setup complete"

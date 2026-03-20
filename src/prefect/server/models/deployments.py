@@ -1316,3 +1316,38 @@ async def with_system_labels_for_deployment_flow_run(
     user_labels = user_supplied_labels or {}
 
     return parent_labels | system_labels | user_labels
+
+
+@db_injector
+async def schedule_preview(
+    db: PrefectDBInterface,
+    session: AsyncSession,
+    deployment_id: UUID,
+    n: int = 5,
+) -> list[datetime.datetime]:
+    """Return the next ``n`` scheduled datetimes across all active schedules for
+    a deployment, sorted ascending.
+
+    Args:
+        session: A database session
+        deployment_id: The deployment to preview schedules for
+        n: Number of upcoming datetimes to return (default 5, max 20)
+
+    Returns:
+        Sorted list of upcoming scheduled datetimes
+    """
+    n = min(n, 20)
+    deployment = await read_deployment(session=session, deployment_id=deployment_id)
+    if not deployment:
+        return []
+
+    now = datetime.datetime.now(datetime.timezone.utc)
+    dates: list[datetime.datetime] = []
+    for dep_schedule in deployment.schedules:
+        if not dep_schedule.active:
+            continue
+        upcoming = await dep_schedule.schedule.get_dates(n=n, start=now)
+        dates.extend(upcoming)
+
+    dates.sort()
+    return dates[:n]
