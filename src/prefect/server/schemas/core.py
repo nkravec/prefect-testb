@@ -1068,6 +1068,31 @@ class WorkQueueStatusDetail(PrefectBaseModel):
     )
 
 
+class WorkQueueStats(PrefectBaseModel):
+    """Runtime statistics for a work queue."""
+
+    work_queue_id: UUID = Field(..., description="The ID of the work queue.")
+    scheduled_runs: int = Field(
+        default=0,
+        description="Number of flow runs in a SCHEDULED state assigned to this queue.",
+    )
+    running_runs: int = Field(
+        default=0,
+        description="Number of flow runs in a RUNNING state assigned to this queue.",
+    )
+    concurrency_limit: Optional[int] = Field(
+        default=None,
+        description="The concurrency limit configured for this queue, if any.",
+    )
+    available_slots: Optional[int] = Field(
+        default=None,
+        description=(
+            "Number of available concurrency slots (concurrency_limit - running_runs)."
+            " None if no concurrency limit is configured."
+        ),
+    )
+
+
 class Agent(ORMBaseModel):
     """An ORM representation of an agent"""
 

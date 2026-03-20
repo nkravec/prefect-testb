@@ -233,3 +233,18 @@ async def read_work_queue_status(
             session=session, work_queue_id=work_queue_id
         )
     return work_queue_status
+
+
+@router.get("/{id:uuid}/stats")
+async def read_work_queue_stats(
+    work_queue_id: UUID = Path(..., description="The work queue id", alias="id"),
+    db: PrefectDBInterface = Depends(provide_database_interface),
+) -> schemas.core.WorkQueueStats:
+    """
+    Get runtime statistics for a work queue, including the number of scheduled
+    and running flow runs and available concurrency slots.
+    """
+    async with db.session_context() as session:
+        return await models.work_queues.read_work_queue_stats(
+            session=session, work_queue_id=work_queue_id
+        )
