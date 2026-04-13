@@ -54,6 +54,7 @@ def test_integration():
     )
     # Generated Assertions
     assert flows_flows_GET_response.status_code == 200
+    assert skyramp.get_response_value(flows_flows_GET_response, "version") == 1
 
 
 if __name__ == "__main__":

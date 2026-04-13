@@ -65,6 +65,7 @@ def test_flows_post():
     assert skyramp.get_response_value(flows_POST_response, "created") is not None
     assert skyramp.get_response_value(flows_POST_response, "id") is not None
     assert skyramp.get_response_value(flows_POST_response, "labels") is not None
+    assert skyramp.get_response_value(flows_POST_response, "version") == 1
 
 
 if __name__ == "__main__":

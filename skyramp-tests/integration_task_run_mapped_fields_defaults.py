@@ -93,6 +93,8 @@ def test_integration():
     )
     # Generated Assertions
     assert task_runs_task_runs_GET_response.status_code == 200
+    assert skyramp.get_response_value(task_runs_task_runs_GET_response, "mapped") == False
+    assert skyramp.get_response_value(task_runs_task_runs_GET_response, "map_index") == -1
 
 
 if __name__ == "__main__":
