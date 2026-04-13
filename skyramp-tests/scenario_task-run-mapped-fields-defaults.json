@@ -1,0 +1,106 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"test-flow-mapped-task-1742400000\", \"tags\": [], \"labels\": {}}",
+    "ResponseBody": "{\"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afc2\", \"name\": \"test-flow-mapped-task-1742400000\", \"tags\": [], \"labels\": {}, \"version\": 1, \"created\": \"2026-03-20T00:00:00Z\", \"updated\": \"2026-03-20T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T17:47:01.942Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"flow_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afc2\", \"name\": \"test-flow-run-mapped-1742400000\", \"tags\": []}",
+    "ResponseBody": "{\"id\": \"4ab96f75-6828-5373-c4d7-3d074g77bgd3\", \"flow_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afc2\", \"name\": \"test-flow-run-mapped-1742400000\", \"state_type\": \"SCHEDULED\", \"state_name\": \"Scheduled\", \"created\": \"2026-03-20T00:00:00Z\", \"updated\": \"2026-03-20T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flow_runs",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T17:47:17.824Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"flow_run_id\": \"4ab96f75-6828-5373-c4d7-3d074g77bgd3\", \"task_key\": \"test-task\", \"dynamic_key\": \"test-task-0\", \"name\": \"test-task-run-mapped-1742400000\", \"tags\": []}",
+    "ResponseBody": "{\"id\": \"5bc07g86-7939-6484-d5e8-4e185h88che4\", \"flow_run_id\": \"4ab96f75-6828-5373-c4d7-3d074g77bgd3\", \"task_key\": \"test-task\", \"dynamic_key\": \"test-task-0\", \"name\": \"test-task-run-mapped-1742400000\", \"mapped\": false, \"map_index\": -1, \"state_type\": \"PENDING\", \"state_name\": \"Pending\", \"created\": \"2026-03-20T00:00:00Z\", \"updated\": \"2026-03-20T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/task_runs",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T17:47:31.921Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"id\": \"5bc07g86-7939-6484-d5e8-4e185h88che4\", \"flow_run_id\": \"4ab96f75-6828-5373-c4d7-3d074g77bgd3\", \"task_key\": \"test-task\", \"dynamic_key\": \"test-task-0\", \"name\": \"test-task-run-mapped-1742400000\", \"mapped\": false, \"map_index\": -1, \"state_type\": \"PENDING\", \"state_name\": \"Pending\", \"created\": \"2026-03-20T00:00:00Z\", \"updated\": \"2026-03-20T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/task_runs/5bc07g86-7939-6484-d5e8-4e185h88che4",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-03-20T17:47:49.382Z",
+    "Scheme": "http"
+  }
+]

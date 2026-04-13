@@ -96,6 +96,11 @@ class Flow(ORMBaseModel):
         description="A dictionary of key-value labels. Values can be strings, numbers, or booleans.",
         examples=[{"key": "value1", "key2": 42}],
     )
+    version: int = Field(
+        default=1,
+        description="The version of the flow definition. Incremented automatically on update.",
+        examples=[1, 2, 3],
+    )
 
 
 class FlowRunPolicy(PrefectBaseModel):
@@ -480,6 +485,17 @@ class TaskRun(TimeSeriesBaseModel, ORMBaseModel):
         default_factory=dict,
         description=(
             "Tracks the source of inputs to a task run. Used for internal bookkeeping."
+        ),
+    )
+    mapped: bool = Field(
+        default=False,
+        description="Whether this task run was created by a task.map() call.",
+    )
+    map_index: int = Field(
+        default=-1,
+        description=(
+            "The index of this task run within a mapped set, or -1 for non-mapped"
+            " task runs."
         ),
     )
     state_type: Optional[states.StateType] = Field(
