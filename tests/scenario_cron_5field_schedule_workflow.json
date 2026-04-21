@@ -1,0 +1,71 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "127.0.0.1",
+    "RequestBody": "{\"name\": \"cron-schedule-flow-1745200000\"}",
+    "ResponseBody": "{\"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"name\": \"cron-schedule-flow-1745200000\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:32:32.904Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "127.0.0.1",
+    "RequestBody": "{\"name\": \"cron-schedule-deploy-1745200000\", \"flow_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"schedules\": [{\"active\": true, \"schedule\": {\"cron\": \"0 9 * * 1-5\", \"timezone\": \"UTC\"}}]}",
+    "ResponseBody": "{\"id\": \"550e8400-e29b-41d4-a716-446655440000\", \"name\": \"cron-schedule-deploy-1745200000\", \"flow_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", \"paused\": false}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/deployments/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:32:32.904Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "127.0.0.1",
+    "RequestBody": "",
+    "ResponseBody": "[{\"id\": \"abc12345-1234-1234-1234-abc123456789\", \"active\": true, \"schedule\": {\"cron\": \"0 9 * * 1-5\", \"timezone\": \"UTC\"}}]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/deployments/550e8400-e29b-41d4-a716-446655440000/schedules",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:32:32.904Z",
+    "Scheme": "http"
+  }
+]
