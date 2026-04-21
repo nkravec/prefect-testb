@@ -697,3 +697,25 @@ async def delete_worker(
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND, detail="Worker not found."
             )
+
+
+# ----- List endpoint (commit 1) -----
+
+
+@router.get("/")
+async def list_work_pools(
+    db: PrefectDBInterface = Depends(provide_database_interface),
+) -> List[schemas.responses.WorkPoolResponse]:
+    """
+    Return all work pools as a JSON array.
+
+    A lightweight list endpoint complementing the existing ``POST /filter``
+    variant — useful for callers that don't need filtering, sorting, or
+    pagination and just want every pool.
+    """
+    async with db.session_context() as session:
+        orm_pools = await models.workers.read_work_pools(session=session)
+        return [
+            schemas.responses.WorkPoolResponse.model_validate(p, from_attributes=True)
+            for p in orm_pools
+        ]
