@@ -719,3 +719,34 @@ async def list_work_pools(
             schemas.responses.WorkPoolResponse.model_validate(p, from_attributes=True)
             for p in orm_pools
         ]
+
+
+# ----- Stats endpoint (commit 2) -----
+
+
+@router.get("/{id:uuid}/stats")
+async def read_work_pool_stats(
+    work_pool_id: UUID = Path(..., description="The work pool id", alias="id"),
+    db: PrefectDBInterface = Depends(provide_database_interface),
+) -> dict:
+    """
+    Return aggregate flow-run counts for the given work pool.
+
+    Body shape:
+
+    - ``running``: count of currently RUNNING flow runs
+    - ``pending``: count of currently PENDING flow runs
+    - ``completed_last_24h``: count of flow runs that completed within
+      the trailing 24 hours.
+    """
+    from prefect.server.services.work_pool_stats import compute_work_pool_stats
+
+    async with db.session_context() as session:
+        pool = await models.workers.read_work_pool(
+            session=session, work_pool_id=work_pool_id
+        )
+        if not pool:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND, detail="Work pool not found."
+            )
+        return await compute_work_pool_stats(session=session, work_pool_id=work_pool_id)
