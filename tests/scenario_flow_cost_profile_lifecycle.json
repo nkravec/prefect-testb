@@ -1,0 +1,80 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{}",
+    "ResponseBody": "{\"id\": \"cp-a2b3c4d5-e6f7-8901-bcde-f12345678901\", \"flow_id\": \"a2b3c4d5-e6f7-8901-bcde-f12345678901\", \"currency\": \"USD\", \"cost_per_second\": 0.0001, \"cost_per_task\": 0.05, \"cost_per_gb_memory\": 0.0025, \"fixed_cost_per_run\": 0.10}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flow-costs-v2/flows/a2b3c4d5-e6f7-8901-bcde-f12345678901/cost-profile/",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:22:25.499Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"flow_id\": \"a2b3c4d5-e6f7-8901-bcde-f12345678901\", \"cost_profile\": {\"id\": \"cp-a2b3c4d5-e6f7-8901-bcde-f12345678901\", \"currency\": \"USD\", \"cost_per_second\": 0.0001}, \"current_spending\": {\"total_cost\": 45.75, \"total_runs\": 150}}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/flow-costs-v2/flows/a2b3c4d5-e6f7-8901-bcde-f12345678901/cost-profile/",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:22:25.500Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"flow_id\": \"a2b3c4d5-e6f7-8901-bcde-f12345678901\", \"period_days\": 30, \"total_runs\": 150}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "Bearer SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/flow-costs-v2/flows/a2b3c4d5-e6f7-8901-bcde-f12345678901/cost-history/",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:22:25.500Z",
+    "Scheme": "http"
+  }
+]
