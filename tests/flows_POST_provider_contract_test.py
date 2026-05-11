@@ -30,20 +30,23 @@ def test_flows_post():
     if os.getenv("SKYRAMP_TEST_TOKEN") is not None:
         headers["Authorization"] = "Bearer " + os.getenv("SKYRAMP_TEST_TOKEN")
 
+    # Use timestamp to ensure unique flow name across test runs
+    flow_name = f"etl-flow-test-{int(time.time())}"
+
     # Request Body
-    flows_POST_request_body = r'''{
+    flows_POST_request_body = f'''{{
         "description": "Daily ETL for analytics",
-        "name": "etl-flow-test"
-    }'''
+        "name": "{flow_name}"
+    }}'''
 
     # Expected Response Body
-    expected_flows_POST_response_body = r'''{
+    expected_flows_POST_response_body = f'''{{
         "created": "2026-05-11T19:07:52Z",
         "description": "Daily ETL for analytics",
         "id": "29bf1a26-c3f5-48d3-baea-c5db42c711ae",
-        "name": "etl-flow-test",
+        "name": "{flow_name}",
         "updated": "2026-05-11T19:07:52Z"
-    }'''
+    }}'''
 
     # Execute Request
     flows_POST_response = client.send_request(
@@ -60,11 +63,21 @@ def test_flows_post():
     assert skyramp.get_response_value(flows_POST_response, "created") is not None
     assert skyramp.get_response_value(flows_POST_response, "id") is not None
     assert skyramp.get_response_value(flows_POST_response, "name") is not None
-    assert skyramp.get_response_value(flows_POST_response, "name") == "etl-flow-test"
+    assert skyramp.get_response_value(flows_POST_response, "name") == flow_name
     assert skyramp.get_response_value(flows_POST_response, "description") == "Daily ETL for analytics"
     assert re.match(r'^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', skyramp.get_response_value(flows_POST_response, "id"), re.I)
     assert re.match(r'^\d{4}-\d{2}-\d{2}T', skyramp.get_response_value(flows_POST_response, "created"))
     assert re.match(r'^\d{4}-\d{2}-\d{2}T', skyramp.get_response_value(flows_POST_response, "updated"))
+
+    # Cleanup: delete the created flow to avoid test data accumulation
+    flow_id = skyramp.get_response_value(flows_POST_response, "id")
+    client.send_request(
+        url=URL,
+        path="/api/flows/{flows}",
+        method="DELETE",
+        path_params={"flows": flow_id},
+        headers=headers
+    )
 
 
 if __name__ == "__main__":
