@@ -1,0 +1,32 @@
+# Skyramp Workspace Configuration
+workspace:
+  repoName: nkravec/prefect-testb
+  repoUrl: https://github.com/nkravec/prefect-testb
+metadata:
+  schemaVersion: v1
+  mcpVersion: 0.1.6
+  executorVersion: v1.3.23
+  createdAt: "2026-05-11T17:50:16.512Z"
+  updatedAt: "2026-05-11T17:50:16.518Z"
+services:
+  - serviceName: prefect-server
+    language: python
+    framework: pytest
+    testDirectory: tests
+    api:
+      schemaPath: http://localhost:4200/openapi.json
+      authType: none
+      baseUrl: http://localhost:4200
+    runtimeDetails:
+      serverStartCommand: prefect server start
+      runtime: local
+  - serviceName: prefect-ui
+    language: typescript
+    framework: playwright
+    testDirectory: ui-v2/e2e
+    api:
+      authType: none
+      baseUrl: http://localhost:5173
+    runtimeDetails:
+      serverStartCommand: npm run dev
+      runtime: local
