@@ -1,0 +1,54 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"skyramp-test-flow-1713600000\"}",
+    "ResponseBody": "{\"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"name\": \"skyramp-test-flow-1713600000\", \"created\": \"2024-04-20T12:00:00Z\", \"updated\": \"2024-04-20T12:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T15:30:30.935Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "[{\"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"name\": \"skyramp-test-flow-1713600000\", \"created\": \"2024-04-20T12:00:00Z\", \"updated\": \"2024-04-20T12:00:00Z\"}]",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ],
+      "Authorization": [
+        "SKYRAMP_PLACEHOLDER_TOKEN"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/flows/recent",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T15:30:30.935Z",
+    "Scheme": "http"
+  }
+]
