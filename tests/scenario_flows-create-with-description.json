@@ -1,0 +1,71 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "{\"name\": \"etl-flow-1747000000\", \"description\": \"Daily ETL for analytics\"}",
+    "ResponseBody": "{\"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"name\": \"etl-flow-1747000000\", \"description\": \"Daily ETL for analytics\", \"tags\": [], \"created\": \"2026-05-11T00:00:00Z\", \"updated\": \"2026-05-11T00:00:00Z\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-05-11T19:07:44.352Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{\"id\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\", \"name\": \"etl-flow-1747000000\", \"description\": \"Daily ETL for analytics\", \"tags\": []}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "GET",
+    "Path": "/api/flows/a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "QueryParams": {},
+    "StatusCode": 200,
+    "Port": 4200,
+    "Timestamp": "2026-05-11T19:07:44.352Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "localhost",
+    "RequestBody": "",
+    "ResponseBody": "{}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "DELETE",
+    "Path": "/api/flows/a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "QueryParams": {},
+    "StatusCode": 204,
+    "Port": 4200,
+    "Timestamp": "2026-05-11T19:07:44.352Z",
+    "Scheme": "http"
+  }
+]
