@@ -1,0 +1,71 @@
+[
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "127.0.0.1",
+    "RequestBody": "{\"name\": \"cron-invalid-flow-1745200002\"}",
+    "ResponseBody": "{\"id\": \"3fa85f64-5717-4562-b3fc-2c963f66afb0\", \"name\": \"cron-invalid-flow-1745200002\"}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/flows/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:32:40.561Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "127.0.0.1",
+    "RequestBody": "{\"name\": \"cron-invalid-deploy-1745200002\", \"flow_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afb0\"}",
+    "ResponseBody": "{\"id\": \"550e8400-e29b-41d4-a716-446655440002\", \"name\": \"cron-invalid-deploy-1745200002\", \"flow_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afb0\", \"paused\": false}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/deployments/",
+    "QueryParams": {},
+    "StatusCode": 201,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:32:40.561Z",
+    "Scheme": "http"
+  },
+  {
+    "Source": "192.168.65.1:39998",
+    "Destination": "127.0.0.1",
+    "RequestBody": "[{\"active\": true, \"schedule\": {\"cron\": \"0 9 ! * *\", \"timezone\": \"UTC\"}}]",
+    "ResponseBody": "{}",
+    "RequestHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "ResponseHeaders": {
+      "Content-Type": [
+        "application/json"
+      ]
+    },
+    "Method": "POST",
+    "Path": "/api/deployments/550e8400-e29b-41d4-a716-446655440002/schedules",
+    "QueryParams": {},
+    "StatusCode": 422,
+    "Port": 4200,
+    "Timestamp": "2026-04-21T17:32:40.561Z",
+    "Scheme": "http"
+  }
+]
